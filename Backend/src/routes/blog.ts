@@ -94,7 +94,18 @@ blogRouter.get("/blog/all", async (c) => {
   try {
     const posts = await prisma.post.findMany({   
         orderBy: { createdAt: "desc" },
-        take: 10,});
+        take: 10,
+        select:{
+          content:true,
+          title:true,
+          id:true,
+          author:{
+            select:{
+              name:true
+            }
+          }
+        }
+      });
     return c.json({posts});
   } catch (error) {
     c.status(500);
