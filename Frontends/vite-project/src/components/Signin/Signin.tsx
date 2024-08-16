@@ -14,12 +14,13 @@ function Signin() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const res = await axios.post(`${DEPLOY_URL}/api/signin`, {
+      const response = await axios.post(`${DEPLOY_URL}/api/signin`, {
 
         email,
         password,
       });
-      toast.success("Signin Successfull!", { position: "top-right" });
+      console.log(response.data)
+      toast.success(response.data.message, { position: "top-right" });
       setEmail('')
       setPassword('')
     } catch (error) {
