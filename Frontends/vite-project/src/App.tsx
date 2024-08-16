@@ -1,6 +1,3 @@
-
-
-
 import Router from './components/Router'
 
 function App() {
