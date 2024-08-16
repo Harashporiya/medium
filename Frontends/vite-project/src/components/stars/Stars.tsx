@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import './Star.css';
 import './Star.scss';
 
 const Star = () => {
+  const navigator = useNavigate();
   return (
     <div className="relative min-h-screen flex flex-col bg-gradient-to-b from-yellow-500 to-yellow-200 overflow-hidden">
       <div className="absolute inset-0 w-px h-px bg-transparent small-stars animate-animStar"></div>
@@ -13,11 +15,11 @@ const Star = () => {
           <h1 className="text-4xl md:text-5xl p-3">Medium</h1>
         </div>
         <div className="flex md:flex-row items-center text-lg md:text-2xl space-y-4 md:space-x-10 md:space-y-0">
-          <p className="font-sans flex-none hidden md:block">Our Story</p>
-          <p className="font-sans flex-none hidden md:block">Membership</p>
-          <p className="font-sans flex-none hidden md:block">Write</p>
-          <p className="font-sans flex-none hidden md:block">Sign in</p>
-          <p className="bg-black p-3 md:p-4 text-white rounded-3xl font-bold cursor-pointer">Get started</p>
+          <button className="font-sans flex-none hidden md:block" onClick={()=>navigator('/about')}>Our Story</button>
+          <button className="font-sans flex-none hidden md:block">Membership</button>
+          <button className="font-sans flex-none hidden md:block">Write</button>
+          <button className="font-sans flex-none hidden md:block">Sign in</button>
+          <button className="bg-black p-3 md:p-4 text-white rounded-3xl font-bold cursor-pointer">Get started</button>
         </div>
       </div>
 
@@ -41,13 +43,13 @@ const Star = () => {
       <footer className="py-6">
         <div className="bg-black h-[1px]"></div>
         <div className="flex justify-center items-center space-x-4 md:space-x-6 text-sm md:text-2xl mt-4">
-          <p className="text-lg md:text-2xl font-bold">Help</p>
-          <p className="text-lg md:text-2xl font-bold hidden md:block">Status</p>
-          <p className="text-lg md:text-2xl font-bold">About</p>
-          <p className="text-lg md:text-2xl font-bold hidden md:block">Blog</p>
-          <p className="text-lg md:text-2xl font-bold">Term</p>
-          <p className="text-lg md:text-2xl font-bold hidden md:block">Team</p>
-          <p className="text-lg md:text-2xl font-bold">Privacy</p>
+          <button className="text-lg md:text-2xl font-bold">Help</button>
+          <button className="text-lg md:text-2xl font-bold hidden md:block">Status</button>
+          <button className="text-lg md:text-2xl font-bold"  onClick={()=>navigator('/about')}>About</button>
+          <button className="text-lg md:text-2xl font-bold hidden md:block">Blog</button>
+          <button className="text-lg md:text-2xl font-bold">Term</button>
+          <button className="text-lg md:text-2xl font-bold hidden md:block">Team</button>
+          <button className="text-lg md:text-2xl font-bold">Privacy</button>
         </div>
       </footer>
     </div>
