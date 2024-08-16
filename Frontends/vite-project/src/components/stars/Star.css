@@ -1,0 +1,14 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
+.box-shadow-small {
+  box-shadow: 1234px 567px #FFF, 876px 234px #FFF,
+}
+
+.box-shadow-medium {
+  box-shadow: 234px 789px #FFF, 678px 123px #FFF, 
+}
+
+.box-shadow-big {
+  box-shadow: 345px 678px #FFF, 890px 456px #FFF, 
+}

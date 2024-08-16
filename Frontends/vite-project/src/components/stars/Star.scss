@@ -1,0 +1,29 @@
+// App.scss
+@function random-pixels($max) {
+    @return random($max) + px;
+  }
+  
+  @function multiple-box-shadow($n) {
+    $value: '#{random-pixels(2000)} #{random-pixels(2000)} #FFF';
+    @for $i from 2 through $n {
+      $value: '#{$value}, #{random-pixels(2000)} #{random-pixels(2000)} #FFF';
+    }
+    @return unquote($value);
+  }
+  
+  $shadows-small: multiple-box-shadow(700);
+  $shadows-medium: multiple-box-shadow(200);
+  $shadows-big: multiple-box-shadow(100);
+  
+  .small-stars {
+    box-shadow: $shadows-small;
+  }
+  
+  .medium-stars {
+    box-shadow: $shadows-medium;
+  }
+  
+  .big-stars {
+    box-shadow: $shadows-big;
+  }
+  
