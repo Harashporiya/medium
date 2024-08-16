@@ -22,7 +22,8 @@ function Signup() {
             setName('')
             setEmail('')
             setPassword('')
-            toast.success("Create Account Successfull!", { position: "top-right" });
+            
+            toast.success(res.data.message, { position: "top-right" });
         } catch (error) {
             console.log("error", error);
             toast.error("Try Again", { position: "top-right" });
