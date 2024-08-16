@@ -18,7 +18,7 @@ const Star = () => {
           <button className="font-sans flex-none hidden md:block" onClick={()=>navigator('/about')}>Our Story</button>
           <button className="font-sans flex-none hidden md:block">Membership</button>
           <button className="font-sans flex-none hidden md:block">Write</button>
-          <button className="font-sans flex-none hidden md:block">Sign in</button>
+          <button className="font-sans flex-none hidden md:block" onClick={()=>navigator('/signin')}>Sign in</button>
           <button className="bg-black p-3 md:p-4 text-white rounded-3xl font-bold cursor-pointer">Get started</button>
         </div>
       </div>

@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 function About() {
+    const navigate = useNavigate();
     return (
         <>
             <div className="bg-[#242424] min-h-screen">
@@ -7,10 +10,10 @@ function About() {
                         <p className="text-4xl md:text-6xl text-white">Medium</p>
                     </div>
                     <div className="space-x-4 md:space-x-10 mt-4 md:mt-0">
-                        <button className="border-2 text-xl md:text-2xl rounded-full px-6 py-2 md:p-4 text-white">
+                        <button onClick={()=>navigate("/signin")} className="border-2 text-xl md:text-2xl rounded-full px-6 py-2 md:p-4 text-white">
                             Sign in
                         </button>
-                        <button className="bg-black text-xl md:text-2xl px-6 py-2 md:p-4 text-white rounded-full">
+                        <button onClick={()=>navigate("/signup")} className="bg-black text-xl md:text-2xl px-6 py-2 md:p-4 text-white rounded-full">
                             Sign up
                         </button>
                     </div>
