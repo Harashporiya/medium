@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const DEPLOY_URL = import.meta.env.VITE_DEPLOY_URL;
@@ -9,7 +9,7 @@ function Signup() {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    // const navigate = useNavigate
+    const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -22,8 +22,13 @@ function Signup() {
             setName('')
             setEmail('')
             setPassword('')
-            
+            const jwt = res.data.jwt
+            // console.log(jwt);
+            localStorage.setItem("token",jwt)
             toast.success(res.data.message, { position: "top-right" });
+            setTimeout(()=>{
+                navigate("/blog")
+            },5000)
         } catch (error) {
             console.log("error", error);
             toast.error("Try Again", { position: "top-right" });

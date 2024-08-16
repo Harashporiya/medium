@@ -10,6 +10,8 @@ const app = new Hono<{
 	}
 }>();
 
+
+
 app.post("/signup", async(c)=>{
     const prisma = new PrismaClient({
 		datasourceUrl: c.env?.DATABASE_URL	,
@@ -25,8 +27,8 @@ app.post("/signup", async(c)=>{
             }
         })
 
-        const token = await sign({id:user.id},c.env.JWT_SECRET)
-        return c.json({ message:"Create Account Successfull"})
+        const jwt = await sign({id:user.id},c.env.JWT_SECRET)
+        return c.json({jwt, message:"Create Account Successfull"})
 
     } catch (error) {
         c.status(403);
@@ -53,7 +55,7 @@ app.post('/signin', async (c) => {
 	}
 
 	const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
-	return c.json({message:"Sign in Successfull!"});
+	return c.json({jwt,message:"Sign in Successfull!"});
 })
 
 export default app
