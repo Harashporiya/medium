@@ -27,7 +27,8 @@ app.post("/signup", async(c)=>{
             }
         })
 
-        const jwt = await sign({id:user.id},c.env.JWT_SECRET)
+		
+        const jwt = await sign({id:user.id}, c.env.JWT_SECRET);
         return c.json({jwt, user, message:"Create Account Successfull"})
 
     } catch (error) {
@@ -54,7 +55,8 @@ app.post('/signin', async (c) => {
 		return c.json({ error: "user not found" });
 	}
 
-	const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
+	
+	const jwt = await sign({id:user.id}, c.env.JWT_SECRET);
 	return c.json({jwt,message:"Sign in Successfull!"});
 })
 
