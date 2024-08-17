@@ -46,6 +46,7 @@ blogRouter.post("/blog", async (c) => {
       data: {
         title: body.title,
         content: body.content,
+        image:body.image,
         authorId: userId,
       },
     });
@@ -74,6 +75,7 @@ blogRouter.put("/blog/update", async (c) => {
       data: {
         title: body.title,
         content: body.content,
+        image:body.image,
       },
     });
 
@@ -98,6 +100,7 @@ blogRouter.get("/blog/all", async (c) => {
         select:{
           content:true,
           title:true,
+          image:true,
           id:true,
           author:{
             select:{
@@ -124,6 +127,17 @@ blogRouter.get("/blog/:id", async (c) => {
       where: {
         id: id,
       },
+      select:{
+        id:true,
+        title:true,
+        content:true,
+        image:true,
+        author:{
+             select:{
+              name:true
+             }
+        }
+      }
     });
 
     if (post) {

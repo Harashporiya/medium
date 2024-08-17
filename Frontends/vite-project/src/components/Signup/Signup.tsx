@@ -27,7 +27,7 @@ function Signup() {
             localStorage.setItem("token",jwt)
             toast.success(res.data.message, { position: "top-right" });
             setTimeout(()=>{
-                navigate("/blog")
+                navigate("/blogs")
             },5000)
         } catch (error) {
             console.log("error", error);

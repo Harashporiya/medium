@@ -28,7 +28,7 @@ app.post("/signup", async(c)=>{
         })
 
         const jwt = await sign({id:user.id},c.env.JWT_SECRET)
-        return c.json({jwt, message:"Create Account Successfull"})
+        return c.json({jwt, user, message:"Create Account Successfull"})
 
     } catch (error) {
         c.status(403);
