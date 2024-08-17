@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const DEPLOY_URL = import.meta.env.VITE_DEPLOY_URL;
@@ -9,7 +9,7 @@ function Signin() {
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-
+   const navigate = useNavigate()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -19,10 +19,15 @@ function Signin() {
         email,
         password,
       });
-      console.log(response.data)
+      // console.log(response.data)
+      const jwt = response.data.jwt
+      localStorage.setItem("token", jwt)
       toast.success(response.data.message, { position: "top-right" });
       setEmail('')
       setPassword('')
+      setTimeout(()=>{
+        navigate("/blogs")
+      },6000)
     } catch (error) {
       console.log("error", error);
       toast.error("Inavlid Email and Password", { position: "top-right" });

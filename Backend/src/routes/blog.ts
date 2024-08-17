@@ -95,9 +95,10 @@ blogRouter.get("/blog/all", async (c) => {
     }).$extends(withAccelerate());
   try {
     const posts = await prisma.post.findMany({   
-        orderBy: { createdAt: "desc" },
+        orderBy: {  createdAt: "desc", },
         take: 10,
         select:{
+          createdAt:true,
           content:true,
           title:true,
           image:true,
@@ -128,6 +129,7 @@ blogRouter.get("/blog/:id", async (c) => {
         id: id,
       },
       select:{
+        createdAt:true,
         id:true,
         title:true,
         content:true,

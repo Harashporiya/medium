@@ -11,18 +11,19 @@ function Blogs() {
         </div>
     }
   return (<>
-  <Nav/>
-    <div className="flex justify-center">
-    <div className="max-w-xl">
+  <Nav />
+    <div className=" pl-2 pr-4 pt-16">
+    <div className="max-w-6xl">
      {
        blog && blog.map(blogs=> <CardBlog
              key={blogs.id}
                id={blogs.id.toString()}
+               createdAt={blogs.createdAt}
             authorName={blogs.author.name}
              title={blogs.title}
              content={blogs.content}
              image={blogs.image}
-             publishedDate={"16 Aug 2024"}
+            //  publishedDate={blogs}
             />)
      }
     </div>
