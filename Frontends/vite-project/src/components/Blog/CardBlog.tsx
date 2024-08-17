@@ -25,7 +25,7 @@ export const CardBlog: React.FC<BlogCardProps> = ({
         <div className='flex-1 p-4'>
           <div className='flex items-center space-x-2 mb-2'>
             <Avatar size={"small"} name={authorName} />
-            <div className='font-bold text-lg'>{authorName}</div>
+            <div className='font-mono text-2xl'>{authorName}</div>
             <div>in</div>
             <div className='font-bold text-gray-600'>{createdAt.slice(0, 10)}</div>
           </div>
@@ -49,7 +49,7 @@ export const CardBlog: React.FC<BlogCardProps> = ({
 
 export function Avatar({ name, size = 'small' }: { name: string, size: 'small' | 'big' }) {
   return (
-    <div className={`relative inline-flex items-center justify-center ${size === 'small' ? 'w-12 h-12 text-lg' : 'w-16 h-16 text-xl'} overflow-hidden bg-gray-700 rounded-full`}>
+    <div className={`relative inline-flex items-center justify-center ${size === 'small' ? 'w-8 h-8 text-lg' : 'w-12 h-12 text-xl'} overflow-hidden bg-gray-700 rounded-full`}>
       <span className='font-bold text-gray-100'>
         {name[0]}
       </span>
