@@ -3,8 +3,10 @@ import Home from "./Home"
 import About from "./About"
 import Signup from "./Signup/Signup"
 import Signin from "./Signin/Signin"
-import Blog from "./Blog/Blog"
+import Blogs from "./Blog/Blogs"
 import Nav from "./Navbar/Nav"
+import Blog from "./Blog/Blog"
+import Publish from "./Publish"
 function Router() {
     return (
         <div>
@@ -14,8 +16,10 @@ function Router() {
                     <Route path="/about" element={<About/>}/>
                     <Route path="/signup" element={<Signup/>}/>
                     <Route path="/signin" element={<Signin/>}/>
-                    <Route path="/blog" element={<Blog/>}/>
+                    <Route path="/blogs" element={<Blogs/>}/>
                     <Route path="/nav" element={<Nav/>}/>
+                    <Route path="/blog/:id" element={<Blog/>}/>
+                    <Route path="/publish" element={<Publish/>}/>
                 </Routes>
             </BrowserRouter>
 

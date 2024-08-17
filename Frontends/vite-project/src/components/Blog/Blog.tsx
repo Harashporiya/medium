@@ -1,32 +1,18 @@
-import { UseBlogs } from "../hooks/UseBlogs"
-import Nav from "../Navbar/Nav"
-import { CardBlog } from "./CardBlog"
-
+import { UseBlog } from "../hooks/UseBlogs"
+import { useParams } from "react-router-dom";
+import FullBlog from "./FullBlog";
 function Blog() {
-    const {loading, blog} = UseBlogs();
-
+    const { id } = useParams()
+    const { loading, blogs } = UseBlog({id:id || ""});
     if(loading){
         return <div>
-            Loding...
+            loading...
         </div>
     }
-  return (<>
-  <Nav/>
-    <div className="flex justify-center">
-    <div className="max-w-xl">
-     {
-       blog && blog.map(blogs=> <CardBlog
-             key={blogs.id}
-               id={blogs.id.toString()}
-            authorName={blogs.author.name}
-             title={blogs.title}
-             content={blogs.content}
-             publishedDate={"16 Aug 2024"}
-            />)
-     }
+  return (
+    <div>
+      <FullBlog blogs={blogs}/>
     </div>
-    </div>
-    </>
   )
 }
 
