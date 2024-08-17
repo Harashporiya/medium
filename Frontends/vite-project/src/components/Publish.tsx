@@ -18,19 +18,19 @@ function Publish() {
     try {
       const plainTextContent = htmlToText(editorContent);
 
-      const content = plainTextContent.split('\n\n')[0] || '';
+      const content = plainTextContent || '';
 
       const response = await axios.post(
         `${DEPLOY_URL}/api/blog`,
         {
           title,
           content,
-          image: image || 'https://via.placeholder.com/150', // Default image if none is provided
+          image: image || 'https://via.placeholder.com/150', 
           authorId,
         },
         {
           headers: {
-            Authorization: localStorage.getItem("token") || '', // Safeguard if token is null
+            Authorization: localStorage.getItem("token") || '', 
           },
         }
       );
