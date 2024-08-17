@@ -12,7 +12,7 @@ export default function Nav() {
           <Link to={"/publish"}>
           <button className='bg-white hover:bg-gray-300 mr-8 px-5 font-medium p-2 text-black rounded-full'>Write blog</button>
           </Link>
-            <Avatar size={"small"} name="harash"/>
+            <Avatar size={"big"} name="harash"/>
         </div>
     </div>
     </>
