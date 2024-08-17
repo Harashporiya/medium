@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const DEPLOY_URL = import.meta.env.VITE_DEPLOY_URL;
-
+import "../stars/Star.css"
+import '../stars/Star.scss'
 function Signin() {
 
   const [email, setEmail] = useState<string>('');
@@ -35,6 +36,11 @@ function Signin() {
   };
 
   return (<>
+   <div className="relative min-h-screen flex flex-col bg-gradient-to-b from-yellow-500 to-yellow-200 overflow-hidden">
+      <div className="absolute inset-0 w-px h-px bg-transparent small-stars animate-animStar"></div>
+      <div className="absolute inset-0 w-px h-px bg-transparent small-stars animate-animStar2"></div>
+      <div className="absolute inset-0 w-px h-px bg-transparent small-stars animate-animStar3"></div>
+
     <div className="flex flex-col md:flex-row justify-around items-center h-screen bg-black">
       <div className="md:mr-10 mb-8 md:mb-0">
         <img
@@ -94,6 +100,7 @@ function Signin() {
       </div>
     </div>
     <ToastContainer />
+    </div>
     </>
   );
 }
