@@ -17,7 +17,6 @@ export const CardBlog: React.FC<BlogCardProps> = ({
   title,
   content,
   image,
-  // publishedDate,
   createdAt,
 }) => {
   return (
@@ -28,7 +27,7 @@ export const CardBlog: React.FC<BlogCardProps> = ({
             <Avatar size={"small"} name={authorName} />
             <div className='font-bold text-lg'>{authorName}</div>
             <div>in</div>
-            <div className='font-bold text-gray-600'>{createdAt.slice(0,10)}</div>
+            <div className='font-bold text-gray-600'>{createdAt.slice(0, 10)}</div>
           </div>
           <div className='text-3xl font-semibold mb-2'>
             {title}
