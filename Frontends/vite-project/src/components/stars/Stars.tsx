@@ -19,8 +19,25 @@ const Star = () => {
     } else {
       navigate("/signin");
     }
+
   };
 
+  const handleBecomeClick = () => {
+    if (isAuth) {
+      navigate("/blogs");
+    } else {
+      navigate("/signin");
+    }
+
+  };
+
+  const handleWriteBlogClick = () => {
+    if (isAuth) {
+      navigate("/publish");
+    } else {
+      navigate("/signin");
+    }
+  }
   return (
     <div className="relative min-h-screen flex flex-col bg-gradient-to-b from-yellow-500 to-yellow-200 overflow-hidden">
       <div className="absolute inset-0 w-px h-px bg-transparent small-stars animate-animStar"></div>
@@ -34,7 +51,7 @@ const Star = () => {
         <div className="flex md:flex-row items-center text-lg md:text-2xl space-y-4 md:space-x-10 md:space-y-0">
           <button className="font-sans flex-none hidden md:block" onClick={() => navigate('/about')}>Our Story</button>
           <button className="font-sans flex-none hidden md:block">Membership</button>
-          <button className="font-sans flex-none hidden md:block">Write</button>
+          <button onClick={handleWriteBlogClick} className="font-sans flex-none hidden md:block">Write</button>
           <button className="font-sans flex-none hidden md:block" onClick={() => navigate('/signin')}>Sign in</button>
           <button onClick={handleGetStartedClick} className="bg-black p-3 md:p-4 text-white rounded-3xl font-bold cursor-pointer">
             Get started
@@ -54,9 +71,9 @@ const Star = () => {
         <p className="text-lg md:text-2xl font-bold text-center">
           Last chance! 2 days left to get 20% off membership
         </p>
-        <p className="text-lg md:text-2xl font-bold text-center bg-black text-white rounded-full p-3 md:p-4 cursor-pointer">
+        <button onClick={handleBecomeClick} className="text-lg md:text-2xl font-bold text-center bg-black text-white rounded-full p-3 md:p-4 cursor-pointer">
           Become a member
-        </p>
+        </button>
       </div>
 
       <footer className="py-6">
