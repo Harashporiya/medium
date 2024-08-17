@@ -17,7 +17,6 @@ function Publish() {
   const fetchDataBlog = async () => {
     try {
       const plainTextContent = htmlToText(editorContent);
-
       const content = plainTextContent || '';
 
       const response = await axios.post(
@@ -40,6 +39,8 @@ function Publish() {
     }
   };
 
+  const isFormComplete = title && editorContent && image;
+
   return (
     <>
       <Nav />
@@ -52,6 +53,7 @@ function Publish() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="p-2 border border-gray-300 rounded w-96 mb-4"
+            required
           />
         </div>
         <JoditEditor
@@ -65,13 +67,16 @@ function Publish() {
           value={image}
           onChange={(e) => setImage(e.target.value)}
           className="mt-4 p-2 border border-gray-300 rounded w-96"
+          required
         />
-        <button
-          onClick={fetchDataBlog}
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mt-4"
-        >
-          Publish
-        </button>
+        {isFormComplete && (
+          <button
+            onClick={fetchDataBlog}
+            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mt-4"
+          >
+            Publish
+          </button>
+        )}
       </div>
     </>
   );
