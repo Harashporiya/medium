@@ -24,7 +24,7 @@ function Signup() {
             setEmail('')
             setPassword('')
             const jwt = res.data.jwt
-            const id = res.data.user.id
+            const id = res.data.id
             // console.log(jwt);
             localStorage.setItem("token",jwt)
             localStorage.setItem("userId", id);

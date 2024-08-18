@@ -92,9 +92,14 @@ function Profile() {
                             <h3 className="text-xl font-bold mb-2">{post.title}</h3>
                             <p className="text-gray-700">{post.content.slice(0, 60)}...</p>
                             <p className="text-gray-500 text-sm mt-2">Published on {new Date(post.createdAt).toLocaleDateString()}</p>
-                            <div>
-                                <button onClick={()=>handleDelete(post.id)} className="bg-red-600 p-2 font-bold  text-white rounded-xl">Delete</button>
+                           <div className="flex justify-between">
+                           <div>
+                                <button onClick={()=>handleDelete(post.id)} className="bg-red-600 hover:bg-red-500 px-6 p-2 font-bold  text-white rounded-xl">Delete</button>
                             </div>
+                            <div>
+                                <button className="p-2 bg-blue-700 hover:bg-blue-600 font-bold rounded-lg text-white">Update Blog</button>
+                            </div>
+                           </div>
                         </div>
 
                     ))}
