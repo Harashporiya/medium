@@ -154,4 +154,44 @@ blogRouter.get("/blog/:id", async (c) => {
   }
 });
 
+blogRouter.get("/profile/:userId", async (c) => {
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL
+  }).$extends(withAccelerate());
+
+  try {
+    const userId = c.req.param("userId");
+
+    const userProfile = await prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        posts: {
+          orderBy: { createdAt: "desc" },
+          select: {
+            id: true,
+            title: true,
+            content: true,
+            image: true,
+            createdAt: true,
+          },
+        },
+      },
+    });
+
+    if (userProfile) {
+      return c.json({ userProfile });
+    } else {
+      c.status(404);
+      return c.json({ message: "User not found" });
+    }
+  } catch (error) {
+    c.status(500);
+    return c.json({ message: "Error fetching user profile", error });
+  }
+});
+
+
 export default blogRouter;

@@ -29,7 +29,7 @@ app.post("/signup", async(c)=>{
 
 		
         const jwt = await sign({id:user.id}, c.env.JWT_SECRET);
-        return c.json({jwt, user, message:"Create Account Successfull"})
+        return c.json({jwt, id:user.id, message:"Create Account Successfull"})
 
     } catch (error) {
         c.status(403);
@@ -57,7 +57,7 @@ app.post('/signin', async (c) => {
 
 	
 	const jwt = await sign({id:user.id}, c.env.JWT_SECRET);
-	return c.json({jwt,message:"Sign in Successfull!"});
+	return c.json({jwt,id:user.id,message:"Sign in Successfull!"});
 })
 
 export default app
