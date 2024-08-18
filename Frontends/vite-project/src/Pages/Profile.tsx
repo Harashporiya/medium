@@ -22,7 +22,7 @@ interface UserProfile {
 }
 
 function Profile() {
-    const { userId } = useParams<{ userId: string }>();
+    const { userId} = useParams<{ userId: string , postId:string}>();
     const [profile, setProfile] = useState<UserProfile | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -45,6 +45,24 @@ function Profile() {
         fetchProfile();
     }, [userId]);
 
+    
+    const handleDelete = async (postId: string) => {
+        try {
+            await axios.delete(`${DEPLOY_URL}/api/delete/${postId}`, {
+                headers: {
+                    Authorization: localStorage.getItem("token") || '',
+                },
+            });
+            setProfile(prevProfile => ({
+                ...prevProfile!,
+                posts: prevProfile?.posts.filter(post => post.id !== postId) || [],
+            }));
+        } catch (error) {
+            console.error("Error deleting the blog:", error);
+        }
+    };
+
+   
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -75,7 +93,7 @@ function Profile() {
                             <p className="text-gray-700">{post.content.slice(0, 60)}...</p>
                             <p className="text-gray-500 text-sm mt-2">Published on {new Date(post.createdAt).toLocaleDateString()}</p>
                             <div>
-                                <button className="bg-red-600 p-2 font-bold  text-white rounded-xl">Delete</button>
+                                <button onClick={()=>handleDelete(post.id)} className="bg-red-600 p-2 font-bold  text-white rounded-xl">Delete</button>
                             </div>
                         </div>
 
