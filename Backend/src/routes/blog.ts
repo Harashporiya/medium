@@ -4,7 +4,6 @@ import { Hono } from 'hono';
 import { verify } from 'hono/jwt';
 
 
-
 const blogRouter = new Hono<{
   Bindings: {
     DATABASE_URL: string,
@@ -193,5 +192,24 @@ blogRouter.get("/profile/:userId", async (c) => {
   }
 });
 
+blogRouter.delete("/delete/:id", async(c)=>{
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env.DATABASE_URL
+  }).$extends(withAccelerate());
+  try {
+    const id =  c.req.param("id")
+    await prisma.post.delete({
+      where:{
+        id
+      }
+      
+    })
+    return c.json({ message: "Post deleted successfully" });
+  } catch (error) {
+    c.status(500);
+    return c.json({ message: "Error deleting the post", error });
+    
+  }
+})
 
 export default blogRouter;

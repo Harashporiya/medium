@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import {Avatar} from '../Blog/CardBlog'
 
+
 export default function Nav() {
   const userId = localStorage.getItem("userId");
   return (

@@ -19,7 +19,7 @@ function Publish() {
       const plainTextContent = htmlToText(editorContent);
       const content = plainTextContent || '';
 
-      const response = await axios.post(
+      await axios.post(
         `${DEPLOY_URL}/api/blog`,
         {
           title,
@@ -36,7 +36,6 @@ function Publish() {
       setTitle("")
       setImage("")
       setEditorContent("")
-      console.log(response.data);
     } catch (error) {
       console.error("Error", error);
     }
