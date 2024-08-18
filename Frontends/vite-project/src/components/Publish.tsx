@@ -33,6 +33,9 @@ function Publish() {
           },
         }
       );
+      setTitle("")
+      setImage("")
+      setEditorContent("")
       console.log(response.data);
     } catch (error) {
       console.error("Error", error);
