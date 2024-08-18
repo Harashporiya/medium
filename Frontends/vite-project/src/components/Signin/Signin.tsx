@@ -49,8 +49,8 @@ function Signin() {
           className="w-72 md:w-[900px] rounded-lg"
         />
       </div>
-      <div className="w-full max-w-sm">
-        <form className="p-10 border-[1px]  bg-black xs:border-white  rounded-xl space-y-4" onSubmit={handleSubmit}>
+      <div className="w-full max-w-sm md:pb-0 pb-44">
+        <form className="p-10 border-[1px]   bg-black xs:border-white  rounded-xl space-y-4" onSubmit={handleSubmit}>
           <p className="text-white text-2xl ml-2">Signin</p>
           <p className="text-gray-300 text-md ml-2">Enter your email below to login to your account</p>
 
