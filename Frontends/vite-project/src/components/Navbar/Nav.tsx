@@ -4,6 +4,7 @@ import {Avatar} from '../Blog/CardBlog'
 
 export default function Nav() {
   const userId = localStorage.getItem("userId");
+  const username = localStorage.getItem("username") || "Jhon"
   return (
     <>
     <div className='border-b bg-black  flex justify-between px-10 py-4'>
@@ -15,7 +16,7 @@ export default function Nav() {
           <button className='bg-white hover:bg-gray-300 mr-8 px-5 font-medium p-2 text-black rounded-full'>Write blog</button>
           </Link>
           <Link to={`/profile/${userId}`}>
-            <Avatar size={"big"} name="harash"/>
+            <Avatar size={"big"} name={username}/>
             </Link>
         </div>
     </div>

@@ -26,6 +26,8 @@ function Signup() {
             const jwt = res.data.jwt
             const id = res.data.id
             // console.log(jwt);
+            const username = res.data.name;
+            localStorage.setItem("username", username);
             localStorage.setItem("token",jwt)
             localStorage.setItem("userId", id);
             toast.success(res.data.message, { position: "top-right" });
