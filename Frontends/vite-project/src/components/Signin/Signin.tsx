@@ -25,6 +25,8 @@ function Signin() {
       localStorage.setItem("token", jwt)
       const id = response.data.id
       localStorage.setItem("userId", id);
+      const username = response.data.name;
+      localStorage.setItem("username", username);
       toast.success(response.data.message, { position: "top-right" });
       setEmail('')
       setPassword('')
