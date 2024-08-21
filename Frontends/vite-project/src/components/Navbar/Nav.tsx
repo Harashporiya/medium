@@ -1,6 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Avatar } from '../Blog/CardBlog';
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false); 
@@ -12,10 +14,15 @@ export default function Nav() {
     localStorage.removeItem("token");
     localStorage.removeItem('userId');
     localStorage.removeItem("username");
-    navigate('/signin');
+    toast.success("Logout Successfull!", { position: "top-right" });
+   
+    setTimeout(()=>{
+      navigate('/signin');
+    }, 6000);
+
   };
 
-  return (
+  return (<> 
     <div className='border-b bg-black flex justify-between items-center px-6 py-4'>
       <Link to={"/blogs"}>
         <div className='text-3xl md:text-4xl text-white flex flex-col justify-center cursor-pointer'>
@@ -60,5 +67,7 @@ export default function Nav() {
         </div>
       )}
     </div>
+    <ToastContainer />
+    </>
   );
 }
