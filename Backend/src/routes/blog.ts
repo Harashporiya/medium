@@ -56,7 +56,7 @@ blogRouter.post("/blog", async (c) => {
     });
   } catch (error) {
     c.status(500);
-    return c.json({ message: "Error creating the blog post" });
+    return c.json({error, message: "Error creating the blog post" });
   }
 });
 
